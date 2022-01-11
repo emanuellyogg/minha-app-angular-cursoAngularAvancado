@@ -6,7 +6,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { SobreComponent } from './institucional/sobre/sobre.component';
-// import { rootRouterConfig, AppRoutingModule } from './app.routes';
 import { CadastroComponent } from './demos/reactiveForms/cadastro/cadastro.component';
 
 import { NgBrazil } from 'ng-brazil';
@@ -14,7 +13,6 @@ import { TextMaskModule } from 'angular2-text-mask';
 import { CustomFormsModule } from 'ng2-validation'
 
 import { AppRoutingModule } from './app.routes';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +28,6 @@ import { AppRoutingModule } from './app.routes';
     TextMaskModule,
     CustomFormsModule,
     AppRoutingModule
-    // [RouterModule.forRoot(rootRouterConfig, { useHash: false })]
   ],
   providers: [
     { provide: APP_BASE_HREF, useValue: '/' }
