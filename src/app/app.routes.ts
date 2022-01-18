@@ -1,3 +1,4 @@
+import { NotFoundComponent } from './navegacao/not-found/not-found.component';
 import { NgModule } from '@angular/core';
 import { CadastroComponent } from './demos/reactiveForms/cadastro/cadastro.component';
 import { Routes, RouterModule } from '@angular/router';
@@ -12,8 +13,10 @@ export const rootRouterConfig: Routes = [
     {
         path: 'produtos',
         loadChildren: () => import('./demos/arquitetura-componentes/produto.module')
-            .then(m => m.ProdutoModule)
-    }
+        .then(m => m.ProdutoModule)
+    },
+    
+    { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({
