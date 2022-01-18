@@ -13,6 +13,7 @@ export class ProdutoDashboardComponent implements OnInit, AfterViewInit {
   produtos: Produto[]
 
   @ViewChild(ProdutoCountComponent, { static: false }) contador: ProdutoCountComponent;
+  
   @ViewChild('teste', { static: false }) mensagemTela: ElementRef;
 
   @ViewChildren(ProdutoDetalheComponent) botoes: QueryList<ProdutoDetalheComponent>;
