@@ -80,6 +80,6 @@ export class ProdutoDashboardComponent implements OnInit, AfterViewInit {
   }
 
   mudarStatus(event: Produto){
-    event.ativo = !event.ativo;
+    event.ativo = !event.ativo;    
   }
 }
