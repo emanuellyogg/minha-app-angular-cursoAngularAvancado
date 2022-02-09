@@ -1,3 +1,4 @@
+import { ProdutoService } from './services/produto.service';
 import { ProdutoCountComponent } from './componentes/produto-count.component';
 import { ProdutoDetalheComponent } from './componentes/produto-card-detalhe.component';
 import { ProdutoRoutingModule } from './produto.route';
@@ -23,9 +24,10 @@ registerLocaleData(localePt)
     CommonModule,
     ProdutoRoutingModule
   ],
-  exports: [
-
-  ]
+  providers: [
+    ProdutoService
+  ],
+  exports: []
 })
 
 export class ProdutoModule { }
