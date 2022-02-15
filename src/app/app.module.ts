@@ -13,6 +13,7 @@ import { TextMaskModule } from 'angular2-text-mask';
 import { CustomFormsModule } from 'ng2-validation'
 
 import { AppRoutingModule } from './app.routes';
+import { AuthGuard } from './services/app.guard';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +31,7 @@ import { AppRoutingModule } from './app.routes';
     AppRoutingModule
   ],
   providers: [
-    { provide: APP_BASE_HREF, useValue: '/' }
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
