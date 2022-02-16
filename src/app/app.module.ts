@@ -15,11 +15,13 @@ import { CustomFormsModule } from 'ng2-validation'
 import { AppRoutingModule } from './app.routes';
 import { AuthGuard } from './services/app.guard';
 import { CadastroGuard } from './services/cadastro.guard';
+import { FilmeComponent } from './demos/pipes/filmes/filme/filme.component';
 @NgModule({
   declarations: [
     AppComponent,
     SobreComponent,
     CadastroComponent,
+    FilmeComponent,
   ],
   imports: [
     BrowserModule,
