@@ -14,6 +14,7 @@ import { CustomFormsModule } from 'ng2-validation'
 
 import { AppRoutingModule } from './app.routes';
 import { AuthGuard } from './services/app.guard';
+import { CadastroGuard } from './services/cadastro.guard';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +32,8 @@ import { AuthGuard } from './services/app.guard';
     AppRoutingModule
   ],
   providers: [
-    AuthGuard
+    AuthGuard,
+    CadastroGuard
   ],
   bootstrap: [AppComponent]
 })
