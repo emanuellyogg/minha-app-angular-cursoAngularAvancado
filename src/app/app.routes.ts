@@ -1,3 +1,5 @@
+import { BarComponent } from './demos/bar-di-zones/bar.component';
+import { FilmesComponent } from './demos/pipes/filmes/filmes.component';
 import { NotFoundComponent } from './navegacao/not-found/not-found.component';
 import { NgModule } from '@angular/core';
 import { CadastroComponent } from './demos/reactiveForms/cadastro/cadastro.component';
@@ -11,6 +13,8 @@ export const rootRouterConfig: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
     { path: 'sobre', component: SobreComponent },
+    { path: 'filmes', component: FilmesComponent },
+    { path: 'bar', component: BarComponent },
     { path: 'cadastro', component: CadastroComponent, canDeactivate: [CadastroGuard] },
     {
         path: 'produtos',
