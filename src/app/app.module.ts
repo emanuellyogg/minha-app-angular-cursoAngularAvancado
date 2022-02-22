@@ -45,7 +45,10 @@ export const BAR_PROVIDERS: Provider[] = [
     TextMaskModule,
     CustomFormsModule,
     AppRoutingModule,
-    BarModule
+    BarModule.forRoot({
+      unidadeId: 1000,
+      unidadeToken: 'aush6721uhaush817juajs'
+    })
   ],
   providers: [
     AuthGuard,
