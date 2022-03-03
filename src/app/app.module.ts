@@ -18,6 +18,7 @@ import { SobreComponent } from './institucional/sobre/sobre.component';
 import { NavegacaoModule } from './navegacao/navegacao.module';
 import { AuthGuard } from './services/app.guard';
 import { CadastroGuard } from './services/cadastro.guard';
+import { HttpClientModule } from '@angular/common/http';
 
 
 registerLocaleData(localePt);
@@ -48,7 +49,8 @@ export const BAR_PROVIDERS: Provider[] = [
     BarModule.forRoot({
       unidadeId: 1000,
       unidadeToken: 'aush6721uhaush817juajs'
-    })
+    }),
+    HttpClientModule
   ],
   providers: [
     AuthGuard,
