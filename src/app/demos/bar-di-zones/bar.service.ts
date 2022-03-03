@@ -7,7 +7,7 @@ export function BarFactory(http: HttpClient, injector: Injector) {
 }
 @Injectable()
 export class BarService {
-  
+
   constructor(
     private http: HttpClient,
     @Inject(BAR_UNIDADE_COFING) private config: BarUnidadeConfig
@@ -43,4 +43,8 @@ export class BarServiceMock {
   obterRefeicoes(): string {
     return 'Mock';
   }
+}
+
+export abstract class  BebidaService {
+  obterBebidas: () => string
 }
