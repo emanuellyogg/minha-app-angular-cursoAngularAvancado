@@ -1,3 +1,4 @@
+import { TodoModule } from './demos/todo-list/todo.module';
 import { BarService } from './demos/bar-di-zones/bar.service';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
@@ -50,7 +51,8 @@ export const BAR_PROVIDERS: Provider[] = [
       unidadeId: 1000,
       unidadeToken: 'aush6721uhaush817juajs'
     }),
-    HttpClientModule
+    HttpClientModule,
+    TodoModule
   ],
   providers: [
     AuthGuard,
