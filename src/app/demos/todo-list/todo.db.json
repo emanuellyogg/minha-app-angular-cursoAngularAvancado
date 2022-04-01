@@ -4,7 +4,7 @@
       "id": 1,
       "nome": "Responder e-mails",
       "finalizado": false,
-      "iniciado": false
+      "iniciado": true
     },
     {
       "id": 2,
@@ -45,6 +45,12 @@
     {
       "id": 8,
       "nome": "Visitar desenvolvedor.io",
+      "finalizado": false,
+      "iniciado": true
+    },
+    {
+      "nome": "estudar",
+      "id": 9,
       "finalizado": false,
       "iniciado": true
     }

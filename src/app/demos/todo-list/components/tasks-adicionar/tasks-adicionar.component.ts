@@ -1,4 +1,7 @@
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { Task } from './../../task';
 import { Component, OnInit } from '@angular/core';
+import { TasksService } from '../../todo.service';
 
 @Component({
   selector: 'tasks-adicionar',
@@ -7,16 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TasksAdicionarComponent implements OnInit {
 
-  taskNew: string;
+  taskForm: FormGroup;
+  tarefa: Task;
 
-  constructor() { }
-
-  ngOnInit() {  
-  }
+  constructor(private tasksService: TasksService, private fb: FormBuilder) { }
 
   taskAdd() {
-   console.log(this.taskNew);
-     
+    if (this.taskForm.dirty && this.taskForm.valid) {
+      this.tarefa = Object.assign({}, this.tarefa, this.taskForm.value);
+
+      this.tasksService.adicionarNova(this.tarefa);
+      this.taskForm.reset();
+    }
+  }
+
+  ngOnInit() {
+    this.taskForm = this.fb.group({
+      nome: ['']
+    })
   }
 
 }
