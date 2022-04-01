@@ -9,6 +9,7 @@ import { TasksIniciadasComponent } from './components/tasks-iniciadas/tasks-inic
 import { TasksComponent } from './components/tasks/tasks.component';
 import { ToDoListComponent } from './components/todo-list/todo-list.component';
 import { TodoComponent } from './todo.component';
+import { TasksAdicionarComponent } from './components/tasks-adicionar/tasks-adicionar.component';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { TodoComponent } from './todo.component';
     TasksFinalizadasComponent,
     TasksIniciadasComponent,
     ToDoListComponent,
-    TasksComponent
+    TasksComponent,
+    TasksAdicionarComponent
   ],
   exports: [
     TodoComponent,
