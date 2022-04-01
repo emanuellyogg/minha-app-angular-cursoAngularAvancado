@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TasksAdicionarComponent implements OnInit {
 
+  taskNew: string;
+
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() {  
+  }
+
+  taskAdd() {
+   console.log(this.taskNew);
+     
   }
 
 }

@@ -45,8 +45,8 @@
     {
       "id": 8,
       "nome": "Visitar desenvolvedor.io",
-      "finalizado": true,
-      "iniciado": false
+      "finalizado": false,
+      "iniciado": true
     }
   ]
 }
