@@ -45,7 +45,7 @@ export class MenuComponent {
     },
     {
       link: '/todo',
-      name: 'ToDo',
+      name: 'To Do',
       exact: false,
       admin: false
     },
@@ -55,8 +55,11 @@ export class MenuComponent {
       exact: false,
       admin: false
     }
-  ]
+  ];
+
 }
+
+
 
 interface Nav {
   link: string,
@@ -64,5 +67,3 @@ interface Nav {
   exact: boolean,
   admin: boolean
 }
-
-

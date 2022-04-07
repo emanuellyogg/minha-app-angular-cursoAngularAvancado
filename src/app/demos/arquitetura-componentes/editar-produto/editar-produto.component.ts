@@ -1,7 +1,7 @@
-import { ProdutoService } from './../services/produto.service';
-import { Produto } from './../models/produto';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ProdutoService } from '../services/produto.service';
+import { Produto } from '../models/produto';
 
 @Component({
   selector: 'app-editar-produto',
@@ -21,13 +21,14 @@ export class EditarProdutoComponent implements OnInit {
     this.route.params
       .subscribe(params => {
         this.produto = this.produtoService.obterPorId(params['id']);
-      })
+      });
   }
 
-  salvar() {
-    //fazer comunicação com o Backend
+  salvar(){
+    // fazer comunicacao com backend
 
     this.router.navigate(['/produtos']);
-    // this.router.navigateByUrl('/produtos');
+    //this.router.navigateByUrl('/produtos');
   }
+
 }

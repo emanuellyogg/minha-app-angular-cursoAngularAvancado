@@ -1,24 +1,26 @@
-import { BAR_UNIDADE_COFING, BarUnidadeConfig } from './bar.config';
-import { Inject, Injectable, Injector } from "@angular/core";
-import { HttpClient } from "@angular/common/http"
+import { Injectable, Inject, Injector } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { BAR_UNIDADE_CONFIG, BarUnidadeConfig } from './bar.config';
 
 export function BarFactory(http: HttpClient, injector: Injector) {
-  return new BarService(http, injector.get(BAR_UNIDADE_COFING));
+
+  return new BarServices(http, injector.get(BAR_UNIDADE_CONFIG));
 }
+
 @Injectable()
-export class BarService {
+export class BarServices {
 
   constructor(
     private http: HttpClient,
-    @Inject(BAR_UNIDADE_COFING) private config: BarUnidadeConfig
+    @Inject(BAR_UNIDADE_CONFIG) private config: BarUnidadeConfig
   ) { }
 
   public obterUnidade(): string {
-    return 'Unidade id: ' + this.config.unidadeId + ' Token: ' + this.config.unidadeToken
+    return 'Unidade ID: ' + this.config.unidadeId + ' Token: ' + this.config.unidadeToken
   }
 
   obterBebidas(): string {
-    return 'Bebidas';
+    return 'Bebidasss';
   }
 
   obterPorcoes(): string {
@@ -30,7 +32,7 @@ export class BarService {
   }
 }
 
-export class BarServiceMock {
+export class BarServicesMock {
 
   obterBebidas(): string {
     return 'Mock';
@@ -45,6 +47,6 @@ export class BarServiceMock {
   }
 }
 
-export abstract class  BebidaService {
+export abstract class BebidaService {
   obterBebidas: () => string
 }

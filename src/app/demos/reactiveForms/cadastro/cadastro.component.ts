@@ -1,37 +1,39 @@
-import { ValidationMessages, DisplayMessage, GenericValidator } from './generic-form-validation';
-import { Usuario } from './models/usuario';
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChildren } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl, FormControlName } from '@angular/forms';
-import { NgBrazilValidators, MASKS } from 'ng-brazil';
-import { CustomValidators } from 'ng2-validation';
-import { fromEvent, merge, Observable } from 'rxjs';
+import { Component, OnInit, AfterViewInit, ElementRef, ViewChildren } from '@angular/core';
+import { FormGroup, FormBuilder, Validators, FormControl, FormControlName } from '@angular/forms';
 
+import { Usuario } from './models/usuario';
+import { NgBrazilValidators } from 'ng-brazil';
+import { utilsBr } from 'js-brasil';
+import { CustomValidators } from 'ng2-validation';
+import { ValidationMessages, GenericValidator, DisplayMessage } from './generic-form-validation';
+import { Observable, fromEvent, merge } from 'rxjs';
 
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html'
 })
 export class CadastroComponent implements OnInit, AfterViewInit {
-
+  
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
 
   cadastroForm: FormGroup;
   usuario: Usuario;
   formResult: string = '';
-  MASKS = MASKS;
+  MASKS = utilsBr.MASKS;
 
   validationMessages: ValidationMessages;
   genericValidator: GenericValidator;
   displayMessage: DisplayMessage = {};
 
-  mudancasNaosalvas: boolean;
+  mudancasNaoSalvas: boolean;
 
   constructor(private fb: FormBuilder) {
+    
     this.validationMessages = {
       nome: {
-        required: 'O nome é obrigatório',
-        minlength: 'O nome precisa ter no mínimo 02 caracteres',
-        maxlenght: 'O nome precisa ter no máximo 150 caracteres'
+        required: 'O Nome é requerido',
+        minlength: 'O Nome precisa ter no mínimo 2 caracteres',
+        maxlength: 'O Nome precisa ter no máximo 150 caracteres'
       },
       cpf: {
         required: 'Informe o CPF',
@@ -39,27 +41,25 @@ export class CadastroComponent implements OnInit, AfterViewInit {
       },
       email: {
         required: 'Informe o e-mail',
-        email: 'E-mail inválido'
+        email: 'Email inválido'
       },
       senha: {
         required: 'Informe a senha',
         rangeLength: 'A senha deve possuir entre 6 e 15 caracteres'
       },
       senhaConfirmacao: {
-        required: 'Informe a senha',
+        required: 'Informe a senha novamente',
         rangeLength: 'A senha deve possuir entre 6 e 15 caracteres',
         equalTo: 'As senhas não conferem'
       }
     };
 
     this.genericValidator = new GenericValidator(this.validationMessages);
-  }
+   }
 
   ngOnInit() {
-
-    let senha = new FormControl('', [Validators.required, CustomValidators.rangeLength([6, 15])]);
-    let senhaConfirm = new FormControl('', [Validators.required, CustomValidators.rangeLength([6, 15]),
-    CustomValidators.equalTo(senha)]);
+    let senha = new FormControl('', [Validators.required, CustomValidators.rangeLength([6,15])]);
+    let senhaConfirm = new FormControl('', [Validators.required, CustomValidators.rangeLength([6,15]), CustomValidators.equalTo(senha)]);
 
     this.cadastroForm = this.fb.group({
       nome: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(150)]],
@@ -68,19 +68,16 @@ export class CadastroComponent implements OnInit, AfterViewInit {
       senha: senha,
       senhaConfirmacao: senhaConfirm
     });
-
-
   }
 
   ngAfterViewInit(): void {
     let controlBlurs: Observable<any>[] = this.formInputElements
-      .map((formControl: ElementRef) => fromEvent(formControl.nativeElement, 'blur'));
+    .map((formControl: ElementRef) => fromEvent(formControl.nativeElement, 'blur'));
 
     merge(...controlBlurs).subscribe(() => {
-      this.displayMessage = this.genericValidator.processarMessagens(this.cadastroForm);
-      this.mudancasNaosalvas = true;
+      this.displayMessage = this.genericValidator.processarMensagens(this.cadastroForm);
+      this.mudancasNaoSalvas = true;
     });
-
   }
 
   adicionarUsuario() {
@@ -88,8 +85,9 @@ export class CadastroComponent implements OnInit, AfterViewInit {
       this.usuario = Object.assign({}, this.usuario, this.cadastroForm.value);
       this.formResult = JSON.stringify(this.cadastroForm.value);
 
-      this.mudancasNaosalvas = false;
-    } else {
+      this.mudancasNaoSalvas = false;
+    }
+    else {
       this.formResult = "Não submeteu!!!"
     }
   }

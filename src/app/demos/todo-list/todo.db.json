@@ -3,13 +3,13 @@
     {
       "id": 1,
       "nome": "Responder e-mails",
-      "finalizado": false,
-      "iniciado": true
+      "finalizado": true,
+      "iniciado": false
     },
     {
       "id": 2,
       "nome": "Reunião com fornecedor",
-      "finalizado": false,
+      "finalizado": true,
       "iniciado": false
     },
     {
@@ -21,7 +21,7 @@
     {
       "id": 4,
       "nome": "Publicar feedback no LinkedIn",
-      "finalizado": false,
+      "finalizado": true,
       "iniciado": false
     },
     {
@@ -37,19 +37,13 @@
       "iniciado": false
     },
     {
-      "id": 7,
-      "nome": "Comprar Café",
-      "finalizado": false,
-      "iniciado": true
-    },
-    {
       "id": 8,
       "nome": "Visitar desenvolvedor.io",
-      "finalizado": false,
-      "iniciado": true
+      "finalizado": true,
+      "iniciado": false
     },
     {
-      "nome": "estudar",
+      "nome": "Pensar na vida",
       "id": 9,
       "finalizado": false,
       "iniciado": true

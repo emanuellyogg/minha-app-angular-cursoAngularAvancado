@@ -1,5 +1,3 @@
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Store } from './todo.store';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
@@ -10,14 +8,14 @@ import { TasksIniciadasComponent } from './components/tasks-iniciadas/tasks-inic
 import { TasksComponent } from './components/tasks/tasks.component';
 import { ToDoListComponent } from './components/todo-list/todo-list.component';
 import { TodoComponent } from './todo.component';
-import { TasksAdicionarComponent } from './components/tasks-adicionar/tasks-adicionar.component';
+import { Store } from './todo.store';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
-    ReactiveFormsModule,
-    FormsModule
+    ReactiveFormsModule
   ],
   providers: [
     TasksService,
@@ -28,8 +26,7 @@ import { TasksAdicionarComponent } from './components/tasks-adicionar/tasks-adic
     TasksFinalizadasComponent,
     TasksIniciadasComponent,
     ToDoListComponent,
-    TasksComponent,
-    TasksAdicionarComponent
+    TasksComponent
   ],
   exports: [
     TodoComponent,

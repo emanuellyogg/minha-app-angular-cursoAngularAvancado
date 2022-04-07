@@ -1,9 +1,9 @@
-import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, QueryList, ViewChildren } from '@angular/core';
 import { Produto } from '../models/produto';
 import { Observable, fromEvent } from 'rxjs';
 import { ProdutoCountComponent } from '../componentes/produto-count.component';
 import { ProdutoDetalheComponent } from '../componentes/produto-card-detalhe.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-produto-dashboard',
@@ -15,6 +15,7 @@ export class ProdutoDashboardComponent implements OnInit, AfterViewInit {
 
   @ViewChild(ProdutoCountComponent, { static: false }) contador: ProdutoCountComponent;
   @ViewChild('teste', { static: false }) mensagemTela: ElementRef;
+
   @ViewChildren(ProdutoDetalheComponent) botoes: QueryList<ProdutoDetalheComponent>;
 
   constructor(private route: ActivatedRoute) { }
@@ -22,7 +23,6 @@ export class ProdutoDashboardComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.produtos = this.route.snapshot.data['produtos'];
     console.log(this.route.snapshot.data['teste']);
-    
   }
 
   ngAfterViewInit(): void {
@@ -41,6 +41,6 @@ export class ProdutoDashboardComponent implements OnInit, AfterViewInit {
   }
 
   mudarStatus(event: Produto){
-    event.ativo = !event.ativo;    
+    event.ativo = !event.ativo;
   }
 }

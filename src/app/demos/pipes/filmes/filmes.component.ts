@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Filme } from './filme';
 import { ImageFormaterPipe } from './image.pipe';
 
@@ -14,7 +14,12 @@ export class FilmesComponent implements OnInit {
   filmes: Filme[];
   mapped: Filme[];
 
-  constructor(private imageFormat: ImageFormaterPipe) { }
+  api_path: string;
+  filmeServiceReturn: string;
+  bebidas: string;
+
+  constructor(
+    private imageFormat: ImageFormaterPipe) { }
 
   ngOnInit() {
 
@@ -62,7 +67,7 @@ export class FilmesComponent implements OnInit {
         dataLancamento: filme.dataLancamento,
         valor: filme.valor,
         tamanho: filme.tamanho,
-        imagem: this.imageFormat.transform(filme.imagem, true, 'default')
+        imagem: this.imageFormat.transform(filme.imagem, 'default', true)
       }
     });
   }

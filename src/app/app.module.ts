@@ -1,33 +1,34 @@
-import { TodoModule } from './demos/todo-list/todo.module';
-import { BarService } from './demos/bar-di-zones/bar.service';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule, Provider } from '@angular/core';
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
+
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
-import { NgModule, Provider } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
-import { TextMaskModule } from 'angular2-text-mask';
-import { NgBrazil } from 'ng-brazil';
-import { CustomFormsModule } from 'ng2-validation';
-import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app.routes';
-import { BarModule } from './demos/bar-di-zones/bar.module';
-import { FileSizePipe } from './demos/pipes/filmes/filesize.pipe';
-import { FilmesComponent } from './demos/pipes/filmes/filmes.component';
-import { ImageFormaterPipe } from './demos/pipes/filmes/image.pipe';
-import { CadastroComponent } from './demos/reactiveForms/cadastro/cadastro.component';
-import { SobreComponent } from './institucional/sobre/sobre.component';
-import { NavegacaoModule } from './navegacao/navegacao.module';
-import { AuthGuard } from './services/app.guard';
-import { CadastroGuard } from './services/cadastro.guard';
-import { HttpClientModule } from '@angular/common/http';
-
-
 registerLocaleData(localePt);
 
-export const BAR_PROVIDERS: Provider[] = [
-  BarService
-];
+import { NgBrazil } from 'ng-brazil'
+import { TextMask } from 'ng-brazil';
+import { CustomFormsModule } from 'ng2-validation'
 
+import { AppComponent } from './app.component';
+import { SobreComponent } from './institucional/sobre/sobre.component';
+import { CadastroComponent } from './demos/reactiveForms/cadastro/cadastro.component';
+import { NavegacaoModule } from './navegacao/navegacao.module';
+
+import { AppRoutingModule } from './app.routes';
+import { AuthGuard } from './services/app.guard';
+import { CadastroGuard } from './services/cadastro.guard';
+import { FilmesComponent } from './demos/pipes/filmes/filmes.component';
+import { FileSizePipe } from './demos/pipes/filmes/filesize.pipe';
+import { ImageFormaterPipe } from './demos/pipes/filmes/image.pipe';
+import { HttpClientModule } from '@angular/common/http';
+import { BarModule } from './demos/bar-di-zones/bar.module';
+import { BarServices } from './demos/bar-di-zones/bar.service';
+import { TodoModule } from './demos/todo-list/todo.module';
+
+export const BAR_PROVIDERS: Provider[] = [
+  BarServices
+];
 
 @NgModule({
   declarations: [
@@ -36,28 +37,28 @@ export const BAR_PROVIDERS: Provider[] = [
     CadastroComponent,
     FilmesComponent,
     FileSizePipe,
-    ImageFormaterPipe,
+    ImageFormaterPipe
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    NavegacaoModule,
     ReactiveFormsModule,
+    NavegacaoModule,
+    HttpClientModule,
+    TextMask.TextMaskModule,
     NgBrazil,
-    TextMaskModule,
     CustomFormsModule,
     AppRoutingModule,
     BarModule.forRoot({
       unidadeId: 1000,
-      unidadeToken: 'aush6721uhaush817juajs'
+      unidadeToken: 'eca938c99a0e9ff91029dc'
     }),
-    HttpClientModule,
     TodoModule
   ],
   providers: [
     AuthGuard,
     CadastroGuard,
-    // BAR_PROVIDERS
+    //BAR_PROVIDERS
   ],
   bootstrap: [AppComponent]
 })

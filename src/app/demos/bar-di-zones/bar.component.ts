@@ -1,47 +1,47 @@
+import { Component, OnInit, Inject, Injector, NgZone } from '@angular/core';
+import { BarServices, BarServicesMock, BarFactory, BebidaService } from './bar.service';
+import { BarUnidadeConfig, BAR_UNIDADE_CONFIG } from './bar.config';
 import { HttpClient } from '@angular/common/http';
-import { Component, Inject, OnInit, Injector, NgZone } from '@angular/core';
-import { BarUnidadeConfig, BAR_UNIDADE_COFING } from './bar.config';
-import { BarFactory, BarService, BebidaService } from './bar.service';
 
 @Component({
   selector: 'app-bar',
   templateUrl: './bar.component.html',
-  styles: [],
   providers: [
-    // { provide: BarService, useClass: BarServiceMock },
+    { provide: BarServices, useClass: BarServices },
     {
-      provide: BarService, useFactory: BarFactory,
+      provide: BarServices, useFactory: BarFactory,
       deps: [
         HttpClient, Injector
       ]
     },
-    { provide: BebidaService, useExisting: BarService }
+    { provide: BebidaService, useExisting: BarServices }
   ]
 })
 export class BarComponent implements OnInit {
 
-  configManual: BarUnidadeConfig;
-  config: BarUnidadeConfig;
-  barBebida1: string;
-  barBebida2: string;
+  ConfigManual: BarUnidadeConfig;
+  Config: BarUnidadeConfig;
+  barBebida1: string;  
+  barBebida2: string;  
   dadosUnidade: string;
 
+
+
   constructor(
-    private barService: BarService,
+    private barServices: BarServices,
     @Inject('ConfigManualUnidade') private ApiConfigManual: BarUnidadeConfig,
-    @Inject(BAR_UNIDADE_COFING) private ApiConfig: BarUnidadeConfig,
-    private bebidaService: BebidaService,
+    @Inject(BAR_UNIDADE_CONFIG) private ApiConfig: BarUnidadeConfig,
+    private bebidaService : BebidaService,
     private ngZone: NgZone
-  ) { }
+    ) { }
 
-  ngOnInit() {
-    this.barBebida1 = this.barService.obterBebidas();
-    this.configManual = this.ApiConfigManual;
-    this.config = this.ApiConfig;
+  ngOnInit(): void { 
+    this.barBebida1 = this.barServices.obterBebidas();
+    this.ConfigManual = this.ApiConfigManual;
+    this.Config = this.ApiConfig;
+    this.dadosUnidade = this.barServices.obterUnidade();
 
-    this.dadosUnidade = this.barService.obterUnidade();
     this.barBebida2 = this.bebidaService.obterBebidas();
-
   }
 
   public progress: number = 0;
@@ -58,7 +58,7 @@ export class BarComponent implements OnInit {
     this.progress = 0;
     this.ngZone.runOutsideAngular(() => {
       this._increaseProgress(() => {
-        this.ngZone.run(() => { console.log('Finalizado fora!');});
+        this.ngZone.run(() => { console.log('Finalizado fora!'); });
       });
     });
   }
@@ -72,6 +72,5 @@ export class BarComponent implements OnInit {
     } else {
       doneCallback();
     }
-    
   }
 }

@@ -1,27 +1,31 @@
-import { BarUnidadeConfig, BAR_UNIDADE_COFING } from './bar.config';
-import { BarComponent } from './bar.component';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ModuleWithProviders, NgModule } from '@angular/core';
+import { BarComponent } from './bar.component';
+import { BarUnidadeConfig, BAR_UNIDADE_CONFIG } from './bar.config';
+
 @NgModule({
   imports: [
     CommonModule
   ],
   declarations: [
-    BarComponent
+      BarComponent
   ],
   exports: [
-    BarComponent
+      BarComponent
   ]
 })
-
-export class BarModule {
-  static forRoot(config: BarUnidadeConfig): ModuleWithProviders {
+export class BarModule { 
+  static forRoot(config: BarUnidadeConfig) : ModuleWithProviders {
     return {
       ngModule: BarModule,
       providers: [
         { provide: 'ConfigManualUnidade', useValue: config },
-        { provide: BAR_UNIDADE_COFING, useValue: config }
+        { provide: BAR_UNIDADE_CONFIG, useValue: config }        
       ]
     }
+  }
+
+  static forChild(){
+
   }
 }
